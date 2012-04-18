@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Radiant</title>
+  <%= stylesheet_link_tag    "radiant/application", :media => "all" %>
+  <%= javascript_include_tag "radiant/application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

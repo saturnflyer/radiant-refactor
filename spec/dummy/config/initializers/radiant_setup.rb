@@ -1,0 +1,1 @@
+Radiant.table_prefix = 'radiant_'
