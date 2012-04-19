@@ -22,7 +22,7 @@ a general purpose content managment system--not merely a blogging engine."
 
   s.add_dependency "rails", "~> 3.2.2"
   s.add_dependency "radius"
-  s.add_dependency "ancestry"
+  s.add_dependency "acts_as_tree"
   s.add_dependency "will_paginate"
   # s.add_dependency "jquery-rails"
 
