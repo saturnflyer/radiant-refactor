@@ -46,6 +46,17 @@ class CreateRadiantTables < ActiveRecord::Migration
     add_index Radiant.prefixed_table_name('pages'), ["parent_id"], :name => "altered_pages_parent_id"
     add_index Radiant.prefixed_table_name('pages'), ["slug", "parent_id"], :name => "altered_pages_child_slug"
     add_index Radiant.prefixed_table_name('pages'), ["virtual", "status_id"], :name => "altered_pages_published"
+
+    create_table "radiant_layouts", :force => true do |t|
+      t.string   "name",          :limit => 100
+      t.text     "content"
+      t.datetime "created_at"
+      t.datetime "updated_at"
+      t.integer  "created_by_id"
+      t.integer  "updated_by_id"
+      t.string   "content_type",  :limit => 40
+      t.integer  "lock_version",                 :default => 0
+    end
   end
 
   def down
