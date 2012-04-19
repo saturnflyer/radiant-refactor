@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(:version => 20120327190906) do
 
   add_index "radiant_config", ["key"], :name => "key", :unique => true
 
+  create_table "radiant_layouts", :force => true do |t|
+    t.string   "name",          :limit => 100
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "created_by_id"
+    t.integer  "updated_by_id"
+    t.string   "content_type",  :limit => 40
+    t.integer  "lock_version",                 :default => 0
+  end
+
   create_table "radiant_page_fields", :force => true do |t|
     t.integer "page_id"
     t.string  "name"
