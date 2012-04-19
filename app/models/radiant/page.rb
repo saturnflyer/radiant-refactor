@@ -1,4 +1,4 @@
-require 'ancestry'
+require 'acts_as_tree'
 
 module Radiant
   class Page < ActiveRecord::Base
