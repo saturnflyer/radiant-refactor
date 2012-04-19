@@ -12,6 +12,8 @@ module Radiant
     # Callbacks
     before_save :update_virtual, :update_status, :set_allowed_children_cache
 
+    attr_accessible :class_name, :layout, :layout_id, :title, :slug, :breadcrumb, :status_id, :parent_id
+
     # Associations
     acts_as_tree
     has_many :parts, :class_name => 'Radiant::PagePart', :order => 'id', :dependent => :destroy
