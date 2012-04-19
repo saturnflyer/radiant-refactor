@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/saturnflyer/dataset.git
+  revision: c836604a9b9cd21cd27a7026ac555225931bc5df
+  specs:
+    dataset (1.4.0.radiant)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.0)
+
 PATH
   remote: .
   specs:
@@ -6,13 +14,6 @@ PATH
       radius
       rails (~> 3.2.2)
       will_paginate
-
-PATH
-  remote: ../../dataset
-  specs:
-    dataset (1.4.0.radiant)
-      activerecord (>= 2.3.0)
-      activesupport (>= 2.3.0)
 
 GEM
   remote: http://rubygems.org/

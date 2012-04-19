@@ -8,7 +8,7 @@ gemspec
 # jquery-rails is used by the dummy application
 gem "jquery-rails"
 
-gem "dataset", :path => '../../dataset', :group => :test
+gem "dataset", :git => 'git://github.com/saturnflyer/dataset.git', :group => :test
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
