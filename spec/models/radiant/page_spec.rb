@@ -111,14 +111,14 @@ describe Radiant::Page, 'validations' do
     page.class_name = 'Object'
     page.valid?.should == false
     assert_not_nil page.errors[:class_name]
-    page.errors[:class_name].should == 'must be set to a valid descendant of Radiant::Page'
+    page.errors[:class_name].should include('must be set to a valid descendant of Radiant::Page')
   end
 
   it 'should not be valid when class name is not a descendant of page and it is set through mass assignment' do
     page.attributes = {:class_name => 'Object' }
     page.valid?.should == false
-    assert_not_nil page.errors.on(:class_name)
-    page.errors.on(:class_name).should == 'must be set to a valid descendant of Radiant::Page'
+    assert_not_nil page.errors[:class_name]
+    page.errors[:class_name].should include('must be set to a valid descendant of Radiant::Page')
   end
 
   it 'should be valid when class name is page or empty or nil' do

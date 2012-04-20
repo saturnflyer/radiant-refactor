@@ -259,7 +259,7 @@ module Radiant
       end
 
       def descendant_class(class_name)
-        raise ArgumentError.new("argument must be a valid descendant of Page") unless is_descendant_class_name?(class_name)
+        raise ArgumentError.new("argument must be a valid descendant of #{self.class.name}") unless is_descendant_class_name?(class_name)
         if ["", nil, "Page"].include?(class_name)
           Page
         else
@@ -292,7 +292,7 @@ module Radiant
 
       def valid_class_name
         unless Page.is_descendant_class_name?(class_name)
-          errors.add :class_name, "must be set to a valid descendant of Page"
+          errors.add :class_name, "must be set to a valid descendant of #{self.class.name}"
         end
       end
 
