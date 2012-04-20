@@ -9,11 +9,11 @@ en:
         not_a_number: 'this must be a number' # must be number
         not_a_page: "there must be a page at this address"
         not_permitted: 'this must be one of the permitted values'
-        taken: 'this name is already in use' # name_in_use
+        taken: 'this is already in use' # in_use
         too_long: 'this must not be longer than %{count} characters' # character_limit
         too_short: 'this must be at least %{count} characters long' # character_minimum
       models:
-        page:
+        'radiant/page':
           attributes:
             slug:
               taken: 'this slug is already in use by a sibling of this page' # slug_in_use

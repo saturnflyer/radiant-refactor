@@ -64,10 +64,14 @@ describe Radiant::Page, 'validations' do
       :slug => 100,
       :breadcrumb => 160
     }.each do |field, max|
-      page.send("#{field}=", max + 1)
+      invalid_field = 'x' * (max + 1)
+      page.send("#{field}=", invalid_field)
       page.valid?
       page.errors[field].should include(('this must not be longer than %d characters' % max))
-      page.send("#{field}=", 'x' * max)
+
+      valid_field = 'x' * max
+      page.send("#{field}=", valid_field)
+      page.valid?
       page.errors[field].should be_blank
     end
   end
@@ -76,6 +80,7 @@ describe Radiant::Page, 'validations' do
     [:title, :slug, :breadcrumb].each do |field|
       ['', ' ', nil].each do |value|
         page.send("#{field}=",value)
+        page.valid?
         page.errors[field].should include('this must not be blank')
       end
     end
@@ -94,11 +99,13 @@ describe Radiant::Page, 'validations' do
     end
   end
 
-  it 'should validate uniqueness of' do
-    parent = Radiant::Page.new
-    page.parent = parent
-    assert_invalid :slug, 'this slug is already in use by a sibling of this page', 'child', 'child-2', 'child-3'
-    assert_valid :slug, 'child-4'
+  it 'should validate uniqueness of slug' do
+    home.save!
+    page.slug = 'page'
+    page.save!
+    other = Radiant::Page.new(page_params.merge({:slug => 'page', :title => 'other'}))
+    other.valid?
+    other.errors[:slug].should include('this slug is already in use by a sibling of this page')
   end
 
   it 'should allow mass assignment for class name' do

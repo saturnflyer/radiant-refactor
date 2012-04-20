@@ -25,14 +25,18 @@ module Radiant
     belongs_to :updated_by, :class_name => 'User'
 
     # Validations
-    validates_presence_of :title, :slug, :breadcrumb, :status_id
+    validates :slug, :length => { :maximum => 100 }, 
+                      :presence => true, 
+                      :format => %r{^([-_.A-Za-z0-9]*|/)$},
+                      :uniqueness => { :scope => :parent_id }
 
-    validates_length_of :title, :maximum => 255
-    validates_length_of :slug, :maximum => 100
-    validates_length_of :breadcrumb, :maximum => 160
+    validates :title, :length => { :maximum => 255 }, 
+                      :presence => true
 
-    validates_format_of :slug, :with => %r{^([-_.A-Za-z0-9]*|/)$}
-    validates_uniqueness_of :slug, :scope => :parent_id
+    validates :breadcrumb, :length => { :maximum => 160 }, 
+                      :presence => true
+    
+    validates :status_id, :presence => true
 
     validate :valid_class_name
 
