@@ -2,8 +2,6 @@ require 'acts_as_tree'
 
 module Radiant
   class Page < ActiveRecord::Base
-  
-    table_name = Radiant.table_name(self)
 
     class MissingRootPageError < StandardError
       def initialize(message = 'Database missing root page'); super end
@@ -35,7 +33,7 @@ module Radiant
 
     validates :breadcrumb, :length => { :maximum => 160 }, 
                       :presence => true
-    
+
     validates :status_id, :presence => true
 
     validate :valid_class_name
